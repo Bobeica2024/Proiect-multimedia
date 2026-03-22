@@ -1,0 +1,160 @@
+/* Stiluri simple, clare, compatibile cu VS Code */
+
+/* Toate elementele folosesc border-box → padding + border nu măresc dimensiunea totală */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;              /* pagina ocupă toată înălțimea ferestrei */
+  margin: 0;                 /* elimină marginile implicite */
+  font-size: 17px;           /* font global mărit pentru lizibilitate */
+  font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: #465b79;            /* culoarea textului */
+  background: #718898;       /* culoarea generală a fundalului */
+  overflow-y: auto;          /* permite scroll vertical */
+  padding-right: 6px;        /* mic spațiu pentru a evita tăierea scrollbarului */
+}
+
+/* Containerul principal ocupă toată înălțimea și organizează conținutul pe verticală */
+.container-fluid {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header, footer {
+  padding: 12px 20px;        /* spațiere internă */
+  background: #ffffff;       /* fundal alb pentru header/footer */
+  border-bottom: 1px solid #e5e7eb; /* linie subtilă de separare */
+}
+
+main {
+  flex: 1;                   /* ocupă tot spațiul rămas între header și footer */
+  display: grid;             /* pregătit pentru layout pe coloane */
+  flex-wrap: wrap;           /* permite reorganizare pe ecrane mici */
+  gap: 16px;                 /* spațiu între panouri */
+  padding: 16px;             /* margini interne */
+}
+
+.panel, .workspace, .sidebar {
+  background: #ffffff;       /* panouri albe */
+  border: 1px solid #e5e7eb; /* bordură discretă */
+  border-radius: 8px;        /* colțuri rotunjite */
+  padding: 12px;             /* spațiere internă */
+}
+
+.controls .group {
+  margin-bottom: 12px;       /* spațiu între grupurile de controale */
+}
+
+.controls label {
+  display: block;            /* etichetele ocupă linie întreagă */
+  margin-bottom: 4px;        /* spațiu sub etichetă */
+}
+
+/* Stilizare pentru inputuri și butoane din zona de controale */
+.controls input[type="color"],
+.controls input[type="range"],
+.controls input[type="number"],
+.controls select,
+.controls button {
+  padding: 6px;              /* spațiu intern pentru confort */
+}
+
+.controls .row {
+  display: flex;             /* aliniere pe orizontală */
+  gap: 8px;                  /* spațiu între elemente */
+  flex-wrap: wrap;           /* permite trecerea pe rândul următor */
+}
+
+button {
+  border: 1px solid #e5e7eb; /* bordură discretă */
+  background: #fff;          /* fundal alb */
+  color: #010c1c;            /* culoare text */
+  padding: 8px 10px;         /* spațiere internă */
+  border-radius: 6px;        /* colțuri rotunjite */
+  cursor: pointer;           /* cursor mână */
+}
+
+button:hover {
+  background: #f3f4f6;       /* efect hover subtil */
+}
+
+/* Butoane accentuate (export, aplică background) */
+button#exportPNG,
+button#exportJPEG,
+button#exportSVG,
+button#applyBg {
+  border-color: #2563eb;     /* albastru accent */
+  color: #2563eb;            /* text albastru */
+}
+
+.workspace {
+  display: flex;             /* centrare canvas */
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#canvas {
+  width: 100%;               /* canvas responsive */
+  max-width: 1200px;         /* limită maximă pe orizontală */
+  aspect-ratio: 5 / 2;       /* păstrează proporția */
+  background: #ffffff;       /* fundal alb */
+  border: 10px solid #000000;/* chenar negru gros */
+  border-radius: 6px;        /* colțuri rotunjite */
+  display: block;            /* elimină spațiul inline */
+}
+
+/* Evidențiere figură selectată în listă */
+.selected-figure {
+  background-color: #ffeeba; /* galben pal */
+  font-weight: bold;                    /* text îngroșat */
+}
+
+/* Evidențiere canvas când e selectată o figură */
+#canvas.highlighted {
+  outline: 3px dashed #007bff; /* contur albastru punctat */
+  outline-offset: -10px;       /* conturul intră în chenar */
+}
+
+#shapeList li {
+  font-size: 17px;             /* font mărit pentru listă */
+  padding: 8px 12px;           /* spațiere internă */
+}
+
+#shapeList {
+  max-height: 350px;           /* înălțime maximă pentru listă */
+  overflow-y: auto;            /* scroll doar în listă */
+}
+
+form#editForm input,
+form#editForm label {
+  font-size: 16px;             /* font puțin mai mare în formular */
+}
+
+.shape-list {
+  list-style: none;            /* elimină bullet points */
+  padding-left: 0;
+  margin: 0;
+}
+
+.shape-list li {
+  padding: 8px;                /* spațiere internă */
+  border-bottom: 1px solid #e5e7eb; /* separator între elemente */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section, .card, .form-group {
+  margin-bottom: 12px;         /* spațiu între secțiuni */
+}
+
+.shape-list li .meta {
+  color: #6b7280;              /* text gri deschis */
+  font-size: 12px;             /* text mic pentru detalii */
+}

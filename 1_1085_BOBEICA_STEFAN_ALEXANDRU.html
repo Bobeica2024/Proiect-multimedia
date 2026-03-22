@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Canvas desen — Tema 1</title>
+
+  <!-- Fișier CSS principal: definește stilurile aplicației -->
+  <link rel="stylesheet" href="1_1085_BOBEICA_STEFAN_ALEXANDRU.css">
+</head>
+
+<body>
+  <!-- Secțiune de antet: titlul aplicației și identificarea temei -->
+  <header>
+    <h1>Program de desenare raster (canvas) — Tema 1</h1>
+  </header>
+
+  <!-- Conținutul principal al aplicației: organizat în trei panouri -->
+  <main>
+
+    <!-- Panou stânga: controale pentru configurarea instrumentelor de desen -->
+    <section class="panel">
+      <div class="controls">
+
+        <!-- Selectarea instrumentului de desen (linie, dreptunghi, elipsă) -->
+        <div class="group">
+          <label for="tool"><strong>Instrument:</strong></label>
+          <select id="tool">
+            <option value="line">Linie</option>
+            <option value="rect">Dreptunghi</option>
+            <option value="ellipse" selected>Elipsă</option>
+          </select>
+        </div>
+
+        <!-- Selectarea culorii conturului -->
+        <div class="group">
+          <label for="culoare_linie"><strong>Culoare linie:</strong></label>
+          <input type="color" id="culoare_linie" value="#1f2937">
+        </div>
+
+        <!-- Selectarea culorii de umplere (transparent pentru fără umplere) -->
+        <div class="group">
+          <label for="culoare_umplere"><strong>Culoare umplere:</strong></label>
+          <input type="color" id="culoare_umplere" value="#00000000">
+          <small>(setează transparent dacă nu vrei umplere)</small>
+        </div>
+
+        <!-- Configurarea grosimii liniei -->
+        <div class="group">
+          <label for="lineWidth"><strong>Grosime linie:</strong></label>
+          <input type="range" id="lineWidth" min="1" max="110" value="3">
+          <span id="lineWidthValue">3</span> px
+        </div>
+
+        <!-- Configurarea culorii de fundal a canvasului -->
+        <div class="group">
+          <label for="bgColor"><strong>Culoare background canvas:</strong></label>
+          <input type="color" id="bgColor" value="#ffffff">
+          <button id="applyBg">Aplică background</button>
+        </div>
+
+        <!-- Acțiuni principale: ștergere și export în diverse formate -->
+        <div class="group row">
+          <button id="clear">Clear canvas</button>
+          <button id="exportPNG">Export PNG</button>
+          <button id="exportJPEG">Export JPEG</button>
+          <button id="exportSVG">Export SVG</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Panou central: zona de lucru (canvas) pentru desenare -->
+    <section class="workspace">
+      <canvas id="canvas" aria-label="spațiu de desen"></canvas>
+    </section>
+
+    <!-- Panou dreapta: listă figuri + formular de editare -->
+    <section class="sidebar">
+
+      <!-- Listă generată dinamic cu toate figurile desenate -->
+      <h2>Lista figurilor</h2>
+      <ul id="shapeList" class="shape-list"></ul>
+
+      <!-- Formular pentru editarea figurii selectate -->
+      <h3>Editare figură selectată</h3>
+      <form id="editForm">
+
+        <!-- Selectarea figurii după index -->
+        <div class="group">
+          <label for="editIndex"><strong>ID figură:</strong></label>
+          <input type="number" id="editIndex" min="0" step="1" placeholder="index din listă">
+        </div>
+
+        <!-- Editarea coordonatelor figurii -->
+        <div class="group">
+          <label><strong>Coordonate:</strong></label>
+          <div class="row">
+            <input type="number" id="editX1" placeholder="x1">
+            <input type="number" id="editY1" placeholder="y1">
+            <input type="number" id="editX2" placeholder="x2 / w / rx">
+            <input type="number" id="editY2" placeholder="y2 / h / ry">
+          </div>
+        </div>
+
+        <!-- Editarea culorii conturului -->
+        <div class="group">
+          <label for="editStroke"><strong>Culoare linie:</strong></label>
+          <input type="text" id="editStroke" placeholder="#000000">
+        </div>
+
+        <!-- Editarea culorii de umplere -->
+        <div class="group">
+          <label for="editFill"><strong>Culoare umplere:</strong></label>
+          <input type="text" id="editFill" placeholder="#00000000">
+        </div>
+
+        <!-- Editarea grosimii liniei -->
+        <div class="group">
+          <label for="editWidth"><strong>Grosime:</strong></label>
+          <input type="number" id="editWidth" min="1" max="110" placeholder="px">
+        </div>
+
+        <!-- Acțiuni asupra figurii selectate -->
+        <div class="group row">
+          <button type="button" id="applyEdit">Aplică modificări</button>
+          <button type="button" id="deleteSelected">Șterge figură</button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+  <!-- Scriptul principal: gestionează logica de desenare și interacțiune -->
+  <script src="1_1085_BOBEICA_STEFAN_ALEXANDRU.js"></script>
+</body>
+</html>
